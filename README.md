@@ -1,4 +1,4 @@
 # backup-chef-server
 
-TODO: Enter the cookbook description here.
+Repositório do Cookbook responsavel pelo Backup do Chef Server.
 
