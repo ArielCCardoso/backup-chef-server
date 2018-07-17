@@ -1,26 +1,58 @@
 ---
+#driver:
+#  name: vagrant
 driver:
-  name: vagrant
+  name: docker
+  use_sudo: true
+  socket: tcp://localhost:2375
+  volume: /etc/chef/:/etc/chef/
+  #volumes_from: chef-validator
+  provision_command: curl -L https://www.opscode.com/chef/install.sh | bash -s -- -v 12.22.5
+
 
 provisioner:
   name: chef_zero
+  data_path: /etc/chef
+  #name: chef_solo
   # You may wish to disable always updating cookbooks in CI or other testing environments.
   # For example:
   #   always_update_cookbooks: <%= !ENV['CI'] %>
   always_update_cookbooks: true
+  #chef_client_path: "/etc/chef/client.rb"
+  client_rb:
+    #audit_mode: :audit_only
+    log_level:        ":debug"
+    log_location:     "STDOUT"
+    ssl_verify_mode: ":no_verify"
+    chef_server_url:  "https://prod-chef-server-4plataforma.brazilsouth.cloudapp.azure.com/organizations/bigdata"
+    validation_client_name:  "bigdata-validator"
+    validation_key: "/tmp/kitchen/data/bigdata-validator.pem"
 
 verifier:
   name: inspec
 
 platforms:
-  - name: ubuntu-16.04
+#  - name: ubuntu-16.04
+#    provision_command:
+#      - apt-get update
   - name: centos-7
+    provision_command:
+      - yum update
 
 suites:
   - name: default
     run_list:
-      - recipe[backup-chef-server::default]
+      - recipe[backup-chef-server::mount_blob]
     verifier:
       inspec_tests:
         - test/integration/default
     attributes:
+#      chef-client:
+#        config:
+#          log_level:        ":debug"
+#          log_location:     "STDOUT"
+#          ssl_verify_mode: ":no_verify"
+#          chef_server_url:  "https://prod-chef-server-4plataforma.brazilsouth.cloudapp.azure.com/organizations/bigdata"
+#          validation_client_name:  "bigdata-validator"
+#          validation_key: "/etc/chef/bigdata-validator.pem"
+
