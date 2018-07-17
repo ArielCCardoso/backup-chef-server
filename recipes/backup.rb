@@ -21,5 +21,5 @@ cron_d 'chef-server-backup' do
   weekday WEEKDAY
   user    USER
   command 'chef-server-ctl backup --yes'
-  user    'root'
+  user    USER
 end
