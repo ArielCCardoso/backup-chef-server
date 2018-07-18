@@ -22,7 +22,7 @@ cron_d 'chef-server-backup' do
   month   MONTH
   weekday WEEKDAY
   user    USER
-  command "chef-server-ctl backup --yes && #{SCRIPT}"
+  command "'chef-server-ctl backup --yes && #{SCRIPT}'"
   user    USER
   action  :create
 end

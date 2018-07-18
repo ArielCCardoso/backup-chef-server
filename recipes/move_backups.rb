@@ -44,7 +44,7 @@ template 'mensal' do
 	group USER
 	mode '0700'
 	variables(
-        :prefixName => PREFIX_D,
+        :prefixName => PREFIX_M,
         :sourcePath => SOURCE,
         :toPath => DIR_BACKUP,
         :ext => EXT)
