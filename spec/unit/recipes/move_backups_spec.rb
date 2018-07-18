@@ -1,12 +1,12 @@
 #
 # Cookbook:: backup-chef-server
-# Spec:: move_backup
+# Spec:: move_backups
 #
 # Copyright:: 2018, The Authors, All Rights Reserved.
 
 require 'spec_helper'
 
-describe 'backup-chef-server::move_backup' do
+describe 'backup-chef-server::move_backups' do
   context 'When all attributes are default, on Ubuntu 16.04' do
     let(:chef_run) do
       # for a complete list of available platforms and versions see:
