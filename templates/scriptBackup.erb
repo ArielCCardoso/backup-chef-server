@@ -1,0 +1,17 @@
+#!/bin/bash
+#
+# Script que move os backup do Chef Server para o Blob Storage
+# Dev: Ariel Cardoso
+#
+sourcePath=<%= @sourcePath %>
+toPath=<%= @toPath %>
+ext=<%= @ext %>
+prefixName=<%= @prefixName %>
+sufixName=`date +%Y%m%d%H%M%S`
+
+if [ -d "${sourcePath}" ]; then
+    if [ -d "${toPath}" ]; then
+        file=`find "${sourcePath}" -type f -mtime 0`
+        mv "${file}" "${toPath}"/"${prefixName}${sufixName}.${ext}"
+    fi
+fi
