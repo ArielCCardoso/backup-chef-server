@@ -35,7 +35,7 @@ template 'blob' do
 		:accountName => accName,
 		:accountKey => accKey,
 		:containerName => contName)
-	action :create_if_missing
+	action :create
   end
 
 directory 'backup-temp' do

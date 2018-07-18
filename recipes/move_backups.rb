@@ -34,7 +34,7 @@ template 'diario' do
         :sourcePath => SOURCE,
         :toPath => DIR_BACKUP,
         :ext => EXT)
-	action :create_if_missing
+	action :create
   end
 
 template 'mensal' do
@@ -48,5 +48,5 @@ template 'mensal' do
         :sourcePath => SOURCE,
         :toPath => DIR_BACKUP,
         :ext => EXT)
-	action :create_if_missing
+	action :create
   end
