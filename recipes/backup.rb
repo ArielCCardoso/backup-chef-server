@@ -24,4 +24,5 @@ cron_d 'chef-server-backup' do
   user    USER
   command "chef-server-ctl backup --yes && #{SCRIPT}"
   user    USER
+  action  :create
 end
