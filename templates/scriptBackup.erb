@@ -12,6 +12,8 @@ sufixName=`date +%Y%m%d%H%M%S`
 if [ -d "${sourcePath}" ]; then
     if [ -d "${toPath}" ]; then
         file=`find "${sourcePath}" -type f -mtime 0`
-        mv "${file}" "${toPath}"/"${prefixName}${sufixName}.${ext}"
+        if [ -f "${file}" ]; then
+            mv "${file}" "${toPath}"/"${prefixName}${sufixName}.${ext}"
+        fi
     fi
 fi
