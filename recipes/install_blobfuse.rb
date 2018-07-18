@@ -4,4 +4,7 @@
 #
 # Copyright:: 2018, The Authors, All Rights Reserved.
 
-include_recipe "yum-microsoft::default"
+yum_package 'blobfuse' do
+    package_name 'blobfuse'
+    action :install
+  end
