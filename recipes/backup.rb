@@ -12,6 +12,9 @@ MONTH   = "#{node['backup-chef-server']['diario']['cron']['month']}"
 WEEKDAY = "#{node['backup-chef-server']['diario']['cron']['weekday']}"
 USER    = "#{node['backup-chef-server']['user']}"
 
+#Move backup
+SCRIPT = "#{node['backup-chef-server']['scripts']}/#{node['backup-chef-server']['diario']['script_name']}"
+
 cron_d 'chef-server-backup' do
   minute  MINUTE
   hour    HOUR
@@ -19,6 +22,6 @@ cron_d 'chef-server-backup' do
   month   MONTH
   weekday WEEKDAY
   user    USER
-  command 'chef-server-ctl backup --yes'
+  command "chef-server-ctl backup --yes && #{SCRIPT}"
   user    USER
 end
