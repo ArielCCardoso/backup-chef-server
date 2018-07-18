@@ -5,13 +5,12 @@
 # Copyright:: 2018, The Authors, All Rights Reserved.
 
 #Cron Values
-MINUTE  = "#{node["backup-chef-server"]["cron"]["minute"]}"
-HOUR    = "#{node["backup-chef-server"]["cron"]["hour"]}"
-DAY     = "#{node["backup-chef-server"]["cron"]["day"]}"
-MONTH   = "#{node["backup-chef-server"]["cron"]["month"]}"
-WEEKDAY = "#{node["backup-chef-server"]["cron"]["weekday"]}"
-USER    = "#{node["backup-chef-server"]["user"]}"
-
+MINUTE  = "#{node['backup-chef-server']['diario']['cron']['minute']}"
+HOUR    = "#{node['backup-chef-server']['diario']['cron']['hour']}"
+DAY     = "#{node['backup-chef-server']['diario']['cron']['day']}"
+MONTH   = "#{node['backup-chef-server']['diario']['cron']['month']}"
+WEEKDAY = "#{node['backup-chef-server']['diario']['cron']['weekday']}"
+USER    = "#{node['backup-chef-server']['user']}"
 
 cron_d 'chef-server-backup' do
   minute  MINUTE
