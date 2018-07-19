@@ -13,12 +13,14 @@ RET_M      = "#{node['backup-chef-server']['mensal']['retention']}"
 PREFIX_D   = "#{node['backup-chef-server']['diario']['prefix_name']}"
 PREFIX_M   = "#{node['backup-chef-server']['mensal']['prefix_name']}"
 EXT        = "#{node['backup-chef-server']['ext']}"
+SOURCE     = "#{node['backup-chef-server']['path']}"
 
 bash 'clean_backups' do
     cwd        '/tmp'
     user       USER
     action     :run
     code       <<-CODE
+    find #{SOURCE} -type f -name "*.#{EXT}" -exec rm -f {} \\;
     find #{DIR_BACKUP} -type f -name "#{PREFIX_D}*.#{EXT}" -mtime +#{RET_D} -exec rm -f {} \\;
     find #{DIR_BACKUP} -type f -name "#{PREFIX_M}*.#{EXT}" -mtime +#{RET_M} -exec rm -f {} \\;
     CODE
