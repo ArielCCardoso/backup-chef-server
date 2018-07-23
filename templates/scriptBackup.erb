@@ -8,7 +8,7 @@ toPath=<%= @toPath %>
 ext=<%= @ext %>
 prefixName=<%= @prefixName %>
 sufixName=`date +%Y%m%d%H%M%S`
-
+chef-server-ctl backup --yes
 if [ -d "${sourcePath}" ]; then
     if [ -d "${toPath}" ]; then
         file=`find "${sourcePath}" -type f -mtime 0`
