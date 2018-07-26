@@ -5,6 +5,6 @@
 # Copyright:: 2018, The Authors, All Rights Reserved.
 
 yum_package 'blobfuse' do
-    package_name 'blobfuse'
-    action :install
-  end
+  package_name 'blobfuse'
+  action :install
+end

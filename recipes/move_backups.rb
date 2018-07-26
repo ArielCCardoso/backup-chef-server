@@ -15,38 +15,38 @@ DIR_BACKUP  = "#{node['backup-chef-server']['mount']['path']}"
 USER        = "#{node['backup-chef-server']['user']}"
 
 directory 'scritps' do
-    path DIR
-    owner USER
-    group USER
-    mode '0700'
-    recursive true
-    action :create
-  end
+  path DIR
+  owner USER
+  group USER
+  mode '0700'
+  recursive true
+  action :create
+end
 
 template 'diario' do
-	path "#{DIR}/#{SCRIPT_D}"
-	source 'scriptBackup.erb'
-	owner USER
-	group USER
-	mode '0700'
-	variables(
-        :prefixName => PREFIX_D,
-        :sourcePath => SOURCE,
-        :toPath => DIR_BACKUP,
-        :ext => EXT)
-	action :create
-  end
+  path "#{DIR}/#{SCRIPT_D}"
+  source 'scriptBackup.erb'
+  owner USER
+  group USER
+  mode '0700'
+  variables(
+    prefixName: PREFIX_M,
+    sourcePath: SOURCE,
+    toPath: DIR_BACKUP,
+    ext: EXT)
+  action :create
+end
 
 template 'mensal' do
-	path "#{DIR}/#{SCRIPT_M}"
-	source 'scriptBackup.erb'
-	owner USER
-	group USER
-	mode '0700'
-	variables(
-        :prefixName => PREFIX_M,
-        :sourcePath => SOURCE,
-        :toPath => DIR_BACKUP,
-        :ext => EXT)
-	action :create
-  end
+  path "#{DIR}/#{SCRIPT_M}"
+  source 'scriptBackup.erb'
+  owner USER
+  group USER
+  mode '0700'
+  variables(
+    prefixName: PREFIX_M,
+    sourcePath: SOURCE,
+    toPath: DIR_BACKUP,
+    ext: EXT)
+  action :create
+end
