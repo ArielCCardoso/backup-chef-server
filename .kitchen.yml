@@ -5,9 +5,9 @@ driver:
   name: docker
   use_sudo: true
   socket: tcp://localhost:2375
-  volume: /etc/chef/:/etc/chef/
+  volume: C:/chef/:/etc/chef/
   #volumes_from: chef-validator
-  provision_command: curl -L https://www.opscode.com/chef/install.sh | bash -s -- -v 12.22.5
+  #provision_command: curl -L https://www.opscode.com/chef/install.sh | bash -s -- -v 12.22.5
 
 
 provisioner:
@@ -20,13 +20,13 @@ provisioner:
   always_update_cookbooks: true
   #chef_client_path: "/etc/chef/client.rb"
   client_rb:
-    #audit_mode: :audit_only
-    log_level:        ":debug"
-    log_location:     "STDOUT"
-    ssl_verify_mode: ":no_verify"
-    chef_server_url:  "https://prod-chef-server-4plataforma.brazilsouth.cloudapp.azure.com/organizations/bigdata"
-    validation_client_name:  "bigdata-validator"
-    validation_key: "/tmp/kitchen/data/bigdata-validator.pem"
+#    audit_mode: :audit_only
+#    log_level:        ":debug"
+#    log_location:     "STDOUT"
+#    ssl_verify_mode: ":no_verify"
+#    chef_server_url:  "https://prod-chef-server-4plataforma.brazilsouth.cloudapp.azure.com/organizations/bigdata"
+#    validation_client_name:  "bigdata-validator"
+#    validation_key: "/etc/bigdata-validator.pem"
 
 verifier:
   name: inspec
