@@ -3,5 +3,3 @@
 Repositório do Cookbook responsavel pelo Backup do Chef Server.
 
 
-
-teste
